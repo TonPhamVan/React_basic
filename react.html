@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./asset/css/styleReact.css">
+    <link rel="stylesheet" href="./asset/font/themify-icons/themify-icons.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id='root'></div>
+    <script type="text/babel">
+        function PostHeader(props) {
+            return (
+                <div className="header">
+                    <div className="container-fixed">
+                        <div className="logo">
+                            <img src= {props.image} alt="logo" />    
+
+                        </div>  
+                        <div className="menu">
+                            <div className="menu-left">
+                                < MenuItem 
+                                nav="Forums" 
+                                />  
+                                < MenuItem 
+                                    nav="Latest"
+                                />  
+                                < MenuItem 
+                                    nav="Members"
+                                />  
+                                < MenuItem 
+                                    nav="pik.vn"
+                                />     
+                            </div> 
+                            <div className="menu-right">
+                                <MenuItem1
+                                    nav1="Login"
+                                />
+                                <MenuItem1
+                                    nav1="Register"
+                                />
+                            </div>
+                            
+                        </div>  
+
+                    </div>    
+                </div>
+            )
+        }
+        function MenuItem (props) {
+            return (
+                <div className="menu-left-content">{props.nav} 
+                    <i className="menu-icon ti-angle-down"></i>
+                </div>
+            )
+        }
+        function MenuItem1 (props) {
+            return (
+                <div className="menu-right-content">{props.nav1} 
+                    <i className="menu-icon ti-angle-down"></i>
+                </div>
+            )
+        }
+        function Box(props) {
+            return (
+                <div className="posts_new">
+                    <div className="container-fixed">
+                        <a href="#" className="new_posts">{props.postsNew}</a>
+                    </div>
+                    
+                </div>
+            )
+        }
+        const arrTable = [
+            {
+                id:"1",
+                content: "Thông báo",
+                contentSub1 :  "15",
+                contentSub2 :  "37",
+                image: "./asset/image/anh1.webp ",
+                rowTitle: "Trải nghiệm Kingston...",
+                li1: "Mar 10,2022",
+                li2: "Kacee"
+            },
+            {
+                id:"2",
+                content: "Góp ý",
+                contentSub1 :  "2.5K",
+                contentSub2 :  "45.4K",
+                image: "./asset/image/anh2.jpg ",
+                rowTitle: "Thắc mắc lí do bị ban...",
+                li1: "33 minutes",
+                li2: "scorpione"
+            },
+            {
+                id:"3",
+                content: "Tin tức iNet",
+                contentSub1 :  "1K+",
+                contentSub2 :  "22.9K",
+                image: "./asset/image/anh3.webp  ",
+                rowTitle: "Neymar nhận lương...",
+                li1: "7 minutes",
+                li2: "Nguyễn Kim"
+            },
+            {
+                id:"4",
+                content: "Tin tức iNet",
+                contentSub1 :  "1K+",
+                contentSub2 :  "22.9K",
+                image: "./asset/image/anh3.webp  ",
+                rowTitle: "Neymar nhận lương...",
+                li1: "7 minutes",
+                li2: "Nguyễn Kim"
+            },
+            {
+                id:"5",
+                content: "Tin tức iNet",
+                contentSub1 :  "1K+",
+                contentSub2 :  "22.9K",
+                image: "./asset/image/anh3.webp  ",
+                rowTitle: "Neymar nhận lương...",
+                li1: "7 minutes",
+                li2: "Nguyễn Kim"
+            }
+        ]
+        function PostBody(props) {
+            return (
+                <div className="body">
+                    <div className="container-fixed">
+                        <div className="posts">
+                            <div className="section-posts">
+                                <div className="post_1">
+                                    <h2>{props.title}</h2> 
+                                    <div className="post-contents">
+                                        {arrTable.map(props => (
+                                            <Table
+                                                key={props.id}
+                                                content={props.content}
+                                                contentSub1 = {props.contentSub1}
+                                                contentSub2 = {props.contentSub2}
+                                                image= {props.image}
+                                                rowTitle= {props.rowTitle}
+                                                li1= {props.li1}
+                                                li2= {props.li2}
+                                            />
+                                        ))}
+                                    </div>   
+                                </div>
+                            </div>
+                            <div className="section-right">
+                                <div className="block">
+                                    <div className="block_header">
+                                        <a href="#">{props.blockHeader}</a>    
+                                    </div>
+                                    <ul className="block_body">
+                                        {ListRights.map(props => (
+                                            <ListRight
+                                                key={props.id}
+                                                imageRight={props.imageRight}
+                                                label={props.label}
+                                                labelContent={props.labelContent}
+                                                blockRow1={props.blockRow1}
+                                                blockRow2={props.blockRow2}
+                                                blockRow3={props.blockRow3}
+                                            />
+                                        ))}
+                                    </ul>
+                                </div>    
+                            </div>
+                        </div>
+                               
+                    </div>    
+                </div>
+            )
+            
+        }
+        function Table(props) {
+            return (
+                <table>
+                    <tbody>
+                        <tr>
+                            <td className="content">
+                                <i className="content-icon ti-comment"></i>    
+                            </td> 
+                            <td className="content_1">
+                                {props.content}    
+                            </td>
+                            <td className="content_2">
+                                <dl className="sub_row">
+                                    <dt>Threads</dt>   
+                                    <dd>{props.contentSub1}</dd> 
+                                </dl>
+                                <dl className="sub_row">
+                                    <dt>Massages</dt>   
+                                    <dd>{props.contentSub2}</dd> 
+                                </dl>
+                            </td>
+                            <td className="content_3">
+                                <td>
+                                    <a href="#" className="img">
+                                        <img src={props.image} alt=""/>    
+                                    </a>    
+                                </td>
+                                <td>
+                                    <a href="#" className="row_title">
+                                        {props.rowTitle}    
+                                    </a>    
+                                    <ul className="row_title2">
+                                        <li className="li_1">{props.li1}</li> 
+                                        <li className="li_2">{props.li2}</li>     
+                                    </ul>
+                                </td>    
+                            </td>
+                        </tr>    
+                    </tbody>  
+                </table>
+            )
+        }
+        const ListRights = [
+            {
+                id:"1",
+                imageRight: "./asset/image/anh1.webp",
+                label: "thảo luận",
+                labelContent: "Genshin Impact Chính thức phát hành , Game thế giới mở đa nền tảng PC-Mobile-PS4 - VN Sub",
+                blockRow1:"Latest: tmk1207",
+                blockRow2:"21 minutes ago",
+                blockRow3:"Sản phẩm & Dịch vụ khác"
+            },
+            {
+                id:"2",
+                imageRight: "./asset/image/anh1.webp",
+                label: "thảo luận",
+                labelContent: "Genshin Impact Chính thức phát hành , Game thế giới mở đa nền tảng PC-Mobile-PS4 - VN Sub",
+                blockRow1:"Latest: tmk1207",
+                blockRow2:"21 minutes ago",
+                blockRow3:"Sản phẩm & Dịch vụ khác"
+            },
+            {
+                id:"3",
+                imageRight: "./asset/image/anh1.webp",
+                label: "thảo luận",
+                labelContent: "Genshin Impact Chính thức phát hành , Game thế giới mở đa nền tảng PC-Mobile-PS4 - VN Sub",
+                blockRow1:"Latest: tmk1207",
+                blockRow2:"21 minutes ago",
+                blockRow3:"Sản phẩm & Dịch vụ khác"
+            }
+        ]
+        function ListRight(props) {
+            return (
+                <li className="block_body_1">
+                    <div className="block_body_element1">
+                        <div className="block_body_element11">
+                            <a href="#" className="img">
+                                <img src={props.imageRight} alt="" className="imageRight"/>    
+                            </a>    
+                        </div>    
+                    </div>
+                    <div className="block_body_element2">
+                        <div className="block_body_element21">
+                            <a href="#">
+                                <span className="label">{props.label}</span>
+                                {props.labelContent}
+                            </a>
+                        </div>
+                        <div className="block_body_element22">
+                            <ul className="block_row">
+                                <li>{props.blockRow1}</li>
+                                <li>{props.blockRow2}</li>
+                            </ul>
+                        </div>
+                        <div className="block_body_element23">
+                            <a href="#">{props.blockRow3}</a>
+                        </div>
+                    </div>
+                </li>
+            )
+        }
+        function Footer(props) {
+            return (
+                <div className="footer">
+                    <div className="container-fixed">
+                        <div className="footer_row1">
+                            <ul className="submenu">
+                                <li className="submenu_title">{props.navFooter1}</li>
+                                <li className="submenu_title">{props.navFooter2}</li>
+                                <li className="submenu_title">{props.navFooter3}</li>
+                                <li className="submenu_title">{props.navFooter4}</li>
+                                <li className="submenu_title"><i className="ti-rss"></i></li>
+                            </ul>
+                            <div className="clear"></div>
+                        </div>
+                        <div className="footer_row2">
+                            <p>{props.pFooter1}</p>
+                            <p>{props.pFooter2}</p>
+                            <p>{props.pFooter3}</p>
+                        </div>
+                        <div className="footer_row3">
+                            <a href="#">{props.aFooter1}</a>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+        const arr = [
+                {
+                    id:"1",
+                    title:"Đại sảnh",
+                    blockHeader:"Latest posts"
+                    
+                },
+                {
+                    id:"2",
+                    title:"Phần mềm",
+                    blockHeader:"Latest profile posts"
+                    
+                },
+                {
+                    id:"3",
+                    title:"Tin tức",
+                    blockHeader:"Forum statistics"
+                    
+                },
+            ]
+        function App() {
+            return (
+                <div id="wrapper">
+                    <PostHeader
+                        image = "https://statics.voz.tech/styles/next/xenforo/voz-logo.png?v=3"
+                    />   
+                    <Box 
+                    postsNew="New posts"
+                    />
+                    {arr.map(props => (
+                        <PostBody 
+                            key={props.id}
+                            title={props.title}
+                            blockHeader={props.blockHeader}
+                        />
+                    ))}
+                    <Footer
+                        navFooter1 = "Contact us"
+                        navFooter2 = "Terms and rules"
+                        navFooter3 = "Privacy policy"
+                        navFooter4 = "Help"
+                        pFooter1="Chịu trách nhiệm nội dung: Bạch Thành Trung © 2000-2021 Công ty TNHH Thật Vi Diệu"
+                        pFooter2="ĐC tầng 4, số 6-8 Nguyễn Gia Trí, p25 Bình Thạnh, Hồ Chí Minh - SĐT 0983757213 - MST 0313906593"
+                        pFooter3="GP MXH 334/GP-BTTTT 19/08/2019"
+                        aFooter1="Community platform by XenForo® © 2010-2021 XenForo Ltd."
+                    />
+
+
+                </div>
+            )}
+        ReactDOM.render ( <App/>, document.getElementById('root'))
+    </script>
+</body>
+</html>
